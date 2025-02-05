@@ -452,4 +452,15 @@ while seguimos:
         seguimos = False
         break
 ```
+```python
+def palindroma(palabra):
+    palabra= palabra.replace(" ", "")
+    palabra = palabra.lower()
+    palabra_al_reves = palabra[::-1]
+    if palabra == palabra_al_reves:
+        print("Es palíndroma")
+    else:
+        print("No es palíndroma")
 
+palindroma("yo hago yoga hoy")
+```
