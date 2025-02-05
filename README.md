@@ -1,6 +1,6 @@
 # Contenido del Notebook
 
-# EJERCICIO 1 [4 pt]
+
 
 El dataset 'gimnasio.xlsx' representa los entrenamientos de una persona.
 
@@ -24,7 +24,7 @@ df_series = pd.read_excel("gimnasio.xlsx", sheet_name= "Series")
 df_categorias = pd.read_excel("gimnasio.xlsx", sheet_name= "Categorías")
 ```
 
-[0.25 pt] <br>
+
 (2) Si es necesario, cambia los tipos de datos a los más apropiados. Si no es necesario, justifica por qué no lo es.
 
 ```python
@@ -48,14 +48,14 @@ df_categorias["cuenra"] = df_categorias["Categoria"].str.count("a")
 df_categorias = df_categorias.drop(columns= ["cuenra"])
 ```
 
-[0.25 pt] <br>
+
 (3) ¿Cuántos ejercicios distintos tiene registrados por cada categoría?
 
 ```python
 df_categorias.groupby("Categoria").size()
 ```
 
-[0.25 pt] <br>
+
 (4) ¿Cuál fue el día en que realizó menos series, y qué ejercicios diferentes realizó ese día?
 
 ```python
@@ -65,7 +65,7 @@ dia_que_menos = df_series.groupby("Fecha")["Ejercicio"].count().idxmin()
 print(f"El dia que menos ejercicios se han hecho es {dia_que_menos} con: \n{dias_ejercicios.loc[dia_que_menos]} ejercicios")
 ```
 
-[0.25 pt] <br>
+
 (5) El _volumen de entrenamiento_ son los kg totales levantados en un entrenamiento. 
 Calcula el volumen de entrenamiento de cada ejercicio cada día. Para ello, multiplica el peso por el número de repeticiones y suma por las series realizadas de cada ejercicio.
 <br>
@@ -77,7 +77,7 @@ dia_Series = df_series.groupby(["Fecha"]).sum()
 dia_Series
 ```
 
-[0.5 pt] <br>
+
 (6) Entre los días en los que entrenó, ¿cuántos días no entrenó ningún ejercicio de pierna?
 
 ```python
@@ -89,7 +89,7 @@ dias_entrenados = len(dias_entrenados)
 dias_entrenados - dias_con_ejercicio_de_pierna
 ```
 
-[0.25 pt] <br>
+
 (7) Entre los días que fue a entrenar, ¿*en promedio*, qué *día de la semana* realiza menos volumen de entrenamiento total (sumando todos los ejercicios)? Es decir, ¿qué día de la semana es el "más tranquilo" normalmente?
 
 ```python
@@ -102,7 +102,7 @@ df_series.groupby("Dia_de_la_semana")[["Peso", "Repeticiones"]].apply(lambda x: 
 
 ```
 
-[0.25 pt] <br>
+
 (8) Un día, esta persona se lesionó y pasó mucho tiempo si ir a entrenar. ¿Qué día se lesionó?
 
 ```python
@@ -118,7 +118,7 @@ dia_lesion = df_series_sorted.loc[df_series_sorted['Diferencia_dias'].idxmax(), 
 print(f"La persona se lesionó el día: {dia_lesion}")
 ```
 
-[0.25 pt] <br>
+
 (9) Crea un gráfico de barras que muestre, para cada mes (incluyendo el año), el número de entrenamientos que hizo.
 
 ```python
@@ -131,7 +131,7 @@ ax.bar(numero_entrenamientos["Fecha"], numero_entrenamientos["conteo"], width=1,
 plt.show()
 ```
 
-[0.5 pt] <br>
+
 (10) Genera una tabla donde cada fila sea cada año-mes de entrenamiento, las columnas sean las diferentes categorías de ejercicios, y el contenido de cada celda sea el volumen total de entrenamiento de esa categoría en ese mes.
 <br>
 Algo así:
@@ -157,7 +157,7 @@ tabla_volumen = df_series.groupby(['Año_Mes', 'Categoria'])['vulumen_ejercicio'
 print(tabla_volumen)
 ```
 
-[0.25 pt]<br>
+
 (11) Genera tantos ficheros csv como categorías haya, escribiendo en cada uno de ellos el contenido de df_series filtrado para esa categoría dada. Es decir, habrá un fichero con los datos de Brazo, otro con los datos de Core, otro con los de Espalda etc.
 
 ```python
@@ -180,7 +180,7 @@ pierna = df_series[df_series["Categoria"] == "Pierna"]
 pierna.to_csv("Pierna.csv", index=False)
 ```
 
-[0.5 pt] <br>
+
 (12) Muestra en pantalla un mensaje con las categorías, tal que así:
 
 "Estas son las categorías que puedes consultar:
@@ -217,7 +217,7 @@ ejercicio = df_categorias[df_categorias['Categoria'] == categoria_seleccionada][
 print(f"Un ejercicio de la categoría {categoria_seleccionada} es: {ejercicio}")
 ```
 
-[0.25] <br>
+
 (13) ¿Qué ejercicios utiliza para entrenar bíceps?
 
 ```python
@@ -228,7 +228,7 @@ for index, row in df_categorias.iterrows():
         
 ```
 
-# EJERCICIO 2 [1 pt]
+
 
 He aquí un mensaje en código secreto:<br>
 _BOJNPWBTCJFO_
@@ -288,7 +288,7 @@ def decodificacion(mensaje):
 decodificacion("BOJNPWBTCJFO")
 ```
 
-# EJERCICIO 3 (2 pt)
+
 
 Esto es un juego de dos jugadores: el Jugador 1 crea una lista con tres números del 1 al 10, los que él elija (se da un ejemplo).
 <br>
@@ -325,11 +325,11 @@ intentoscsv["Intentos"] = intentos
 intentoscsv.to_csv(f"intentos{intentos}.csv", index=False)
 ```
 
-# EJERCICIO 4 [3 pt]
+
 
 Trabajaremos con el fichero 'pokemon.csv'.
 
-[0.5 pt] <br>
+
 (1) Carga el fichero e identifica sus missings:
 * Muestra en pantalla una tabla con el número de missings de cada columna, pero __mostrando solamente aquellas columnas que tengan algún missing.__
 <br>
@@ -355,7 +355,7 @@ cantidad_filas_con_missing = len(filas_con_missing)
 print(f"Hay {cantidad_filas_con_missing} filas con al menos un valor missing.")
 ```
 
-[0.25 pt]<br>
+
 (2) Comprueba mediante código que el 100% de los registros para los que se desconoce la altura se desconoce también el peso.
 
 ```python
@@ -368,7 +368,7 @@ peso_nulo = altura_nula['weight_kg'].isnull().all()
 print(f"¿El 100% de los registros para los que se desconoce la altura se desconoce también el peso? {peso_nulo}")
 ```
 
-[0.75 pt]<br>
+
 (3) <br>
 Verás que hay algunas columnas que empiezan por la palabra "against". Lo que sigue a "against" es el nombre de un tipo de ataque, que coincide con los tipos existentes de Pokémon. El valor de esas columnas indica cuánto daño le hacen al Pokémon de la instancia analizada los ataques del tipo en cuestión.
 <br>
@@ -395,14 +395,14 @@ for i in range(len(lista)):
 lista
 ```
 
-[0.25 pt]<br>
+
 (4) ¿Cuál es el tipo primario de Pokémon que, en promedio, más sufre contra agua (against_water)?
 
 ```python
 df_pokemon.groupby("type1")["against_water"].mean().idxmax()
 ```
 
-[0.25 pt]<br>
+
 (5) ¿Cuál es el Pokémon con el nombre más largo?
 
 ```python
@@ -414,7 +414,7 @@ print(df_pokemon.loc[idlargo, 'name'])
 
 ```
 
-[1 pt] <br>
+
 (6)<br>
 Juego "Adivina el tipo". <br>
 Dado el dataset de Pokémon, preséntale al jugador todos los tipos primarios disponibles con un "print" y elige aleatoriamente el nombre de un Pokémon. El jugador debe adivinar el tipo primario al que pertenece en un máximo de cuatro intentos, escribiendo por pantalla el tipo en minúsculas.
