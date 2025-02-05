@@ -452,6 +452,9 @@ while seguimos:
         seguimos = False
         break
 ```
+
+<h3>Palindroma</h3>
+
 ```python
 def palindroma(palabra):
     palabra= palabra.replace(" ", "")
@@ -464,3 +467,48 @@ def palindroma(palabra):
 
 palindroma("yo hago yoga hoy")
 ```
+<h3>Fibonacci</h3>
+
+```python
+def fibonacci(n):
+    if n == 1:
+        return [1]
+    elif n == 2:
+        return [1, 1]
+    else:
+        fibo = fibonacci(n-1)
+        fibo.append(fibo[-1] + fibo[-2])
+        return fibo
+```
+```python
+cuantos = entradas.get_int("Cuántos números de la sucesión de Fibonacci quieres saber?")
+print("Los", cuantos, "primeros números de la sucesión de Fibonacci son:", fibonacci(cuantos))
+```
+<h3>Adivina el numero</h3>
+
+```python
+import random
+nombre =input("Como te llamas?")
+quiere_jugar = input("Hola " + nombre + ", quieres jugar a un juego?")
+def play(number):
+    respuesta = int(input("En qué número estoy pensando?"))
+    acertado = respuesta == number
+    template = "Lo siento, no has acertado. El número que estoy pensando es @como@ que @respuesta@"
+    while not acertado:
+        if number > respuesta:
+            print(template.replace("@como@", "mayor").replace("@respuesta@", str(respuesta)))
+        else:
+            print(template.replace("@como@", "menor").replace("@respuesta@", str(respuesta)))
+        respuesta = int(input("Prueba otra vez: "))
+        acertado = respuesta == number
+    print("Enhorabuena, el número " + str(respuesta) + " es el que había pensado")   
+
+if quiere_jugar:
+    maximo = int(input("Dime un número como máximo: "))
+    maquina = random.randint(0, maximo)
+    play(maquina)
+else:
+    print("Es una pena que no quieras jugar :'( . Que tengas buen día", nombre)
+```
+
+
