@@ -9,7 +9,7 @@ El dataset 'gimnasio.xlsx' representa los entrenamientos de una persona.
 * Se han podido realizar series de diferentes ejercicios el mismo día.
 * En la hoja 'Categorías' se identifica a qué tipología de ejercicio corresponde cada ejercicio.
 
-[0.25 pt] <br>
+
 (1) Lee en una línea *todas las hojas de fichero Excel* 'gimnasio.xlsx'.
 <br>
 Luego, identifica a través de los datos importados los nombres de las hojas y crea dos dfs: 
